@@ -9,6 +9,12 @@ import Foundation
 import SpriteKit
 
 class Ground : SKSpriteNode{
+    
+    func setUpGround () {
+     /*   self.physicsBody?.categoryBitMask = 0b10
+        self.physicsBody?.collisionBitMask = 0b1
+        self.physicsBody?.contactTestBitMask = 0b1 */
+    }
     var textureAtlas: SKTextureAtlas =
     SKTextureAtlas(named:"Environment-ground")
     func createChildren(){
@@ -32,6 +38,7 @@ class Ground : SKSpriteNode{
             self.physicsBody = SKPhysicsBody(edgeFrom: pointTopLeft, to: pointTopRight)
          
         }
+        
         
     
     }

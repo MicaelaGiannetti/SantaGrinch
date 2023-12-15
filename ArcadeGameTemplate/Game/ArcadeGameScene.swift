@@ -12,7 +12,7 @@ struct PhysicsCategory {
     static let Ground: UInt32 = 0b10
 }
 
-class ArcadeGameScene: SKScene {
+class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     /**
      * # The Game Logic
      *     The game logic keeps track of the game variables
@@ -35,7 +35,7 @@ class ArcadeGameScene: SKScene {
         self.anchorPoint = .zero
         self.backgroundColor = UIColor(red:0.4, green:0.6, blue:0.95, alpha:1.0)
         self.camera = cam
-        player.position = CGPoint (x:50, y:250)
+        player.position = CGPoint (x:150, y:250)
         self.addChild(player)
         player.RunningPlayer()
         ground.position = CGPoint (x: -self.size.width * 2, y: 30)
@@ -45,23 +45,33 @@ class ArcadeGameScene: SKScene {
         self.addChild(ground)
         
         self.setUpGame()
+        self.physicsWorld.contactDelegate = self
      //   self.setUpPhysicsWorld()
         
         
+    }
+    func didBegin(_ contact: SKPhysicsContact){
+        if contact.bodyA.categoryBitMask == 0b1 && contact.bodyB.categoryBitMask == 0b10 {
+            player.playerInAir = false
+            player.jumpCount = 0
+        }
+     /*   if (contact.bodyA.categoryBitMask & playerMask) > 0 {
+            
+        }*/
     }
     
     //Keep camera on player
     
     override func didSimulatePhysics() {
         self.camera!.position.x = player.position.x
-        self.camera!.position.y = player.position.y + 100
+        self.camera!.position.y = 170
     }
     
    
     
     override func update(_ currentTime: TimeInterval) {
-       
-    player.update()
+        
+    
         // ...
         
         // If the game over condition is met, the game will finish
@@ -110,8 +120,10 @@ extension ArcadeGameScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         // TODO: Customize!
+        if player.jumpCount < 3 {
+            player.isJumping(tapPos: (touches.first!.location(in: self.view)))
+        }
         
-        self.gameLogic.finishTheGame()
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -124,6 +136,7 @@ extension ArcadeGameScene {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         // TODO: Customize!
+        player.stopJumping()
     }
     
 }

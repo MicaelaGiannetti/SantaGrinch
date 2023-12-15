@@ -14,8 +14,9 @@ class Player : SKSpriteNode{
     var runAnimation = SKAction()
     var jumpAnimation = SKAction()
     var jumping = false
-    let maxJumpingForce : CGFloat = 57000
-    let maxHeight: CGFloat = 1000
+    var playerInAir = false
+    var jumpCount = 0
+    
  
     
     init(){
@@ -24,8 +25,11 @@ class Player : SKSpriteNode{
         self.run(runAnimation, withKey: "runningAnimation")
         let bodyTexture = textureAtlas.textureNamed("player1")
         self.physicsBody = SKPhysicsBody(texture: bodyTexture, size: self.size)
-        self.physicsBody?.mass = 30
+        self.physicsBody?.mass = 16
         self.physicsBody?.allowsRotation = false
+        self.physicsBody?.categoryBitMask = 0b1
+        self.physicsBody?.contactTestBitMask = 0b10
+        self.physicsBody?.collisionBitMask = 0b10
         
     }
     func createAnimations() {
@@ -48,10 +52,37 @@ class Player : SKSpriteNode{
         self.run(neverEndingRun)
     }
     
-    func update(){
-        self.physicsBody?.applyForce(CGVector (dx:0, dy:500))
+    func isJumping(tapPos: CGPoint) {
+        playerInAir = true
+        jumpCount += 1
+        startJumping()
+        self.physicsBody?.velocity = CGVector.zero
+        self.physicsBody?.applyImpulse(CGVector (dx:0, dy:500))
+        
     }
     
+    func update(){
+        
+        }
+            
+        /*    let jumpUp = SKAction.moveTo(y: 300, duration: 0.3)
+            let jumpDown = SKAction.moveTo(y: 250, duration: 0.3)
+            self.run(SKAction.sequence([jumpUp,jumpDown]), withKey: "Jump")
+            self.run(jumpAnimation) */
+        
+    
+    
+    func startJumping(){
+        self.removeAction(forKey: "runningAnimation")
+        self.run(jumpAnimation, withKey: "jumpingAnimation")
+            self.jumping = true
+    }
+    
+    func stopJumping() {
+            self.removeAction(forKey: "jumpingAnimation")
+            self.run(runAnimation, withKey: "runningAnimation")
+            self.jumping = false
+    }
     required init? (coder aDecoder: NSCoder){
         super.init(coder:aDecoder)
     }
