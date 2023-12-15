@@ -29,7 +29,7 @@ class Player : SKSpriteNode{
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = 1
         self.physicsBody?.contactTestBitMask = 2 | 4 | 8
-        self.physicsBody?.collisionBitMask = 2
+        self.physicsBody?.collisionBitMask = 2 | 4
         
     }
     func createAnimations() {
@@ -52,12 +52,16 @@ class Player : SKSpriteNode{
         self.run(neverEndingRun)
     }
     
-    func isJumping(tapPos: CGPoint) {
+    func isJumping() {
         playerInAir = true
         jumpCount += 1
         startJumping()
-        self.physicsBody?.velocity = CGVector.zero
-        self.physicsBody?.applyImpulse(CGVector (dx:0, dy:500))
+      //  self.physicsBody?.velocity = CGVector.zero
+       // self.physicsBody?.applyImpulse(CGVector (dx:0, dy:500))
+        let jumpUp = SKAction.moveTo(y: 200, duration: 0.6)
+        let jumpDown = SKAction.moveTo(y: 60, duration: 0.6)
+        self.run(SKAction.sequence([jumpUp,jumpDown]), withKey: "Jump")
+            
         
     }
     

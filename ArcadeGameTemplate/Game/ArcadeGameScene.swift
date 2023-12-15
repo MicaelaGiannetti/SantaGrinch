@@ -29,6 +29,8 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     let cam = SKCameraNode()
     let ground = Ground()
    let player = Player()
+    let initialPlayerPosition = CGPoint(x: 150, y: 250)
+    var playerProgress = CGFloat()
     
     
     
@@ -37,7 +39,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         self.anchorPoint = .zero
         self.backgroundColor = UIColor(red:0.4, green:0.6, blue:0.95, alpha:1.0)
         self.camera = cam
-        player.position = CGPoint (x:150, y:250)
+        player.position = initialPlayerPosition
         self.addChild(player)
         player.RunningPlayer()
         ground.position = CGPoint (x: -self.size.width * 2, y: 30)
@@ -53,33 +55,39 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         self.setUpGame()
         self.physicsWorld.contactDelegate = self
      //   self.setUpPhysicsWorld()
-        
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: -5)
         
     }
     func didBegin(_ contact: SKPhysicsContact){
-      /*  if contact.bodyA.categoryBitMask == 1 && contact.bodyB.categoryBitMask == 2 {
+        if contact.bodyA.categoryBitMask == 1 && contact.bodyB.categoryBitMask == 2 {
             player.playerInAir = false
-            player.jumpCount = 0 */
-        let otherBody : SKPhysicsBody
+            player.stopJumping()
+            print ("Contatto")
+        }
+        if contact.bodyA.categoryBitMask == 2 && contact.bodyB.categoryBitMask == 1 {
+            player.playerInAir = false
+            player.stopJumping()
+            print ("Contatto")
+        }
+     /*   let otherBody : SKPhysicsBody
         if (contact.bodyA.categoryBitMask & 1) > 0 {
             otherBody = contact.bodyB
-        }
-     /*   if (contact.bodyA.categoryBitMask & playerMask) > 0 {
-            
-        }*/
+        } */
     }
     
     //Keep camera on player
     
     override func didSimulatePhysics() {
-        self.camera!.position.x = player.position.x
+        self.camera!.position.x = player.position.x + 200
         self.camera!.position.y = 170
+        playerProgress = player.position.x - initialPlayerPosition.x
+        ground.checkForReposition(playerProgress: playerProgress)
     }
     
    
     
     override func update(_ currentTime: TimeInterval) {
-        
+        print ("PlayerIsInAir\(player.playerInAir)")
     
         // ...
         
@@ -121,31 +129,34 @@ extension ArcadeGameScene {
 }
 
 
+
 // MARK: - Handle Player Inputs
 extension ArcadeGameScene {
     
     //TODO: Add comment here
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        // TODO: Customize!
-        if player.jumpCount < 3 {
-            player.isJumping(tapPos: (touches.first!.location(in: self.view)))
+        if !player.playerInAir {
+            player.isJumping ()
         }
+        // TODO: Customize!
+     /*   if player.jumpCount < 3 {
+            player.isJumping(tapPos: (touches.first!.location(in: self.view)))
+        } */
         
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         // TODO: Customize!
-        for touch in touches {
+     /*   for touch in touches {
             let location = touch.location(in: self)
             let nodeTouched = atPoint(location)
-        }
+        } */
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         // TODO: Customize!
-        player.stopJumping()
+    
     }
     
 }

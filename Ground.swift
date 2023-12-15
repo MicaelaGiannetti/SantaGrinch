@@ -9,6 +9,8 @@ import Foundation
 import SpriteKit
 
 class Ground : SKSpriteNode{
+    var jumpWidth = CGFloat()
+    var jumpCount = CGFloat(1)
     
     func setUpGround () {
      /*   self.physicsBody?.categoryBitMask = 0b10
@@ -37,11 +39,21 @@ class Ground : SKSpriteNode{
             let pointTopRight = CGPoint (x:size.width,y:0)
             self.physicsBody = SKPhysicsBody(edgeFrom: pointTopLeft, to: pointTopRight)
             self.physicsBody?.categoryBitMask = 2
+            self.physicsBody?.collisionBitMask = 1
+            self.physicsBody?.contactTestBitMask = 1
          
         }
         
-        
+        jumpWidth = tileSize.width * floor(tileCount/3)
     
+    }
+    func checkForReposition (playerProgress: CGFloat){
+        let groundJumpPosition = jumpWidth * jumpCount
+        
+        if playerProgress >= groundJumpPosition {
+            self.position.x += jumpWidth
+            jumpCount += 1
+        }
     }
     
     
