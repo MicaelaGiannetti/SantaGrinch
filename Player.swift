@@ -27,9 +27,9 @@ class Player : SKSpriteNode{
         self.physicsBody = SKPhysicsBody(texture: bodyTexture, size: self.size)
         self.physicsBody?.mass = 16
         self.physicsBody?.allowsRotation = false
-        self.physicsBody?.categoryBitMask = 0b1
-        self.physicsBody?.contactTestBitMask = 0b10
-        self.physicsBody?.collisionBitMask = 0b10
+        self.physicsBody?.categoryBitMask = 1
+        self.physicsBody?.contactTestBitMask = 2 | 4 | 8
+        self.physicsBody?.collisionBitMask = 2
         
     }
     func createAnimations() {

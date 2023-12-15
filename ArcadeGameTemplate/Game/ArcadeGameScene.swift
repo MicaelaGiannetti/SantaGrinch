@@ -8,8 +8,10 @@ import SwiftUI
 
 struct PhysicsCategory {
     static let None: UInt32 = 0
-    static let Player: UInt32 = 0b1
-    static let Ground: UInt32 = 0b10
+    static let Player: UInt32 = 1
+    static let Ground: UInt32 = 2
+    static let Elves : UInt32 = 4
+    static let Obstacles : UInt32 = 8
 }
 
 class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
@@ -41,8 +43,12 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         ground.position = CGPoint (x: -self.size.width * 2, y: 30)
         ground.size = CGSize (width: self.size.width * 6, height: 0)
         ground.createChildren()
-        
         self.addChild(ground)
+        
+        let elf = Elves()
+        elf.position = CGPoint(x: 400, y: 70)
+        self.addChild(elf)
+        
         
         self.setUpGame()
         self.physicsWorld.contactDelegate = self
@@ -51,9 +57,12 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     func didBegin(_ contact: SKPhysicsContact){
-        if contact.bodyA.categoryBitMask == 0b1 && contact.bodyB.categoryBitMask == 0b10 {
+      /*  if contact.bodyA.categoryBitMask == 1 && contact.bodyB.categoryBitMask == 2 {
             player.playerInAir = false
-            player.jumpCount = 0
+            player.jumpCount = 0 */
+        let otherBody : SKPhysicsBody
+        if (contact.bodyA.categoryBitMask & 1) > 0 {
+            otherBody = contact.bodyB
         }
      /*   if (contact.bodyA.categoryBitMask & playerMask) > 0 {
             

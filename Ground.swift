@@ -36,12 +36,14 @@ class Ground : SKSpriteNode{
           let pointTopLeft = CGPoint (x:0,y:0)
             let pointTopRight = CGPoint (x:size.width,y:0)
             self.physicsBody = SKPhysicsBody(edgeFrom: pointTopLeft, to: pointTopRight)
+            self.physicsBody?.categoryBitMask = 2
          
         }
         
         
     
     }
+    
     
 }
 
