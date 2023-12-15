@@ -21,6 +21,11 @@
 		271CB27227D74CB900615359 /* GameScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CB27127D74CB900615359 /* GameScoreView.swift */; };
 		3B3E234D2B2C684F000DBFE3 /* Elves.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E234C2B2C684F000DBFE3 /* Elves.swift */; };
 		3B3E234F2B2C6BB5000DBFE3 /* Obstacles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E234E2B2C6BB5000DBFE3 /* Obstacles.swift */; };
+		3B3E23512B2CEBAA000DBFE3 /* Gifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E23502B2CEBAA000DBFE3 /* Gifts.swift */; };
+		3B3E23542B2CF26D000DBFE3 /* EncounterA.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B3E23532B2CF26D000DBFE3 /* EncounterA.sks */; };
+		3B3E23562B2CF57E000DBFE3 /* EncounterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E23552B2CF57E000DBFE3 /* EncounterManager.swift */; };
+		3B3E235A2B2CFA2B000DBFE3 /* EncounterB.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B3E23592B2CFA2B000DBFE3 /* EncounterB.sks */; };
+		3B3E235C2B2CFAC9000DBFE3 /* EncounterC.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B3E235B2B2CFAC9000DBFE3 /* EncounterC.sks */; };
 		3B489EF72B28773A002CF4B2 /* Ground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B489EF62B28773A002CF4B2 /* Ground.swift */; };
 		3BF528302B284B840030759F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF5282F2B284B840030759F /* Player.swift */; };
 /* End PBXBuildFile section */
@@ -41,6 +46,11 @@
 		271CB27127D74CB900615359 /* GameScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreView.swift; sourceTree = "<group>"; };
 		3B3E234C2B2C684F000DBFE3 /* Elves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elves.swift; sourceTree = "<group>"; };
 		3B3E234E2B2C6BB5000DBFE3 /* Obstacles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacles.swift; sourceTree = "<group>"; };
+		3B3E23502B2CEBAA000DBFE3 /* Gifts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gifts.swift; sourceTree = "<group>"; };
+		3B3E23532B2CF26D000DBFE3 /* EncounterA.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterA.sks; sourceTree = "<group>"; };
+		3B3E23552B2CF57E000DBFE3 /* EncounterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterManager.swift; sourceTree = "<group>"; };
+		3B3E23592B2CFA2B000DBFE3 /* EncounterB.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterB.sks; sourceTree = "<group>"; };
+		3B3E235B2B2CFAC9000DBFE3 /* EncounterC.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterC.sks; sourceTree = "<group>"; };
 		3B489EF62B28773A002CF4B2 /* Ground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ground.swift; sourceTree = "<group>"; };
 		3BF5282F2B284B840030759F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,6 +69,9 @@
 		271CB24427D6569700615359 = {
 			isa = PBXGroup;
 			children = (
+				3B3E23552B2CF57E000DBFE3 /* EncounterManager.swift */,
+				3B3E23522B2CF23D000DBFE3 /* Encounters */,
+				3B3E23502B2CEBAA000DBFE3 /* Gifts.swift */,
 				3BF5282F2B284B840030759F /* Player.swift */,
 				3B489EF62B28773A002CF4B2 /* Ground.swift */,
 				3B3E234C2B2C684F000DBFE3 /* Elves.swift */,
@@ -135,6 +148,16 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3B3E23522B2CF23D000DBFE3 /* Encounters */ = {
+			isa = PBXGroup;
+			children = (
+				3B3E23532B2CF26D000DBFE3 /* EncounterA.sks */,
+				3B3E23592B2CFA2B000DBFE3 /* EncounterB.sks */,
+				3B3E235B2B2CFAC9000DBFE3 /* EncounterC.sks */,
+			);
+			path = Encounters;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -193,7 +216,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B3E23542B2CF26D000DBFE3 /* EncounterA.sks in Resources */,
+				3B3E235C2B2CFAC9000DBFE3 /* EncounterC.sks in Resources */,
 				271CB25827D6569900615359 /* Preview Assets.xcassets in Resources */,
+				3B3E235A2B2CFA2B000DBFE3 /* EncounterB.sks in Resources */,
 				271CB25527D6569900615359 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,6 +245,8 @@
 				271CB26B27D6659600615359 /* Constants.swift in Sources */,
 				271CB26827D6570800615359 /* GameOverView.swift in Sources */,
 				271CB26327D656C100615359 /* ArcadeGameView.swift in Sources */,
+				3B3E23512B2CEBAA000DBFE3 /* Gifts.swift in Sources */,
+				3B3E23562B2CF57E000DBFE3 /* EncounterManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,7 +25,7 @@ class Player : SKSpriteNode{
         self.run(runAnimation, withKey: "runningAnimation")
         let bodyTexture = textureAtlas.textureNamed("player1")
         self.physicsBody = SKPhysicsBody(texture: bodyTexture, size: self.size)
-        self.physicsBody?.mass = 16
+        self.physicsBody?.mass = 1
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = 1
         self.physicsBody?.contactTestBitMask = 2 | 4 | 8
@@ -57,10 +57,10 @@ class Player : SKSpriteNode{
         jumpCount += 1
         startJumping()
       //  self.physicsBody?.velocity = CGVector.zero
-       // self.physicsBody?.applyImpulse(CGVector (dx:0, dy:500))
-        let jumpUp = SKAction.moveTo(y: 200, duration: 0.6)
-        let jumpDown = SKAction.moveTo(y: 60, duration: 0.6)
-        self.run(SKAction.sequence([jumpUp,jumpDown]), withKey: "Jump")
+        self.physicsBody?.applyImpulse(CGVector (dx:0, dy:700))
+       /* let jumpUp = SKAction.moveTo(y: 200, duration: 0.6)
+        let jumpDown = SKAction.moveTo(y: 60, duration: 1)
+        self.run(SKAction.sequence([jumpUp,jumpDown]), withKey: "Jump") */
             
         
     }

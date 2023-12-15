@@ -31,6 +31,8 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
    let player = Player()
     let initialPlayerPosition = CGPoint(x: 150, y: 250)
     var playerProgress = CGFloat()
+    let encounterManager = EncounterManager()
+    var nextEncounterSpawnPosition = CGFloat (150)
     
     
     
@@ -47,15 +49,15 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         ground.createChildren()
         self.addChild(ground)
         
-        let elf = Elves()
-        elf.position = CGPoint(x: 400, y: 70)
-        self.addChild(elf)
+      
         
+       
         
         self.setUpGame()
         self.physicsWorld.contactDelegate = self
      //   self.setUpPhysicsWorld()
-        self.physicsWorld.gravity = CGVector(dx: 0, dy: -5)
+        encounterManager.addEncountersToScene(gameScene: self)
+        
         
     }
     func didBegin(_ contact: SKPhysicsContact){
@@ -82,6 +84,12 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         self.camera!.position.y = 170
         playerProgress = player.position.x - initialPlayerPosition.x
         ground.checkForReposition(playerProgress: playerProgress)
+        
+        if player.position.x > nextEncounterSpawnPosition {
+            encounterManager.placeNextEncounter(
+                currentXPos: nextEncounterSpawnPosition)
+            nextEncounterSpawnPosition += 1200
+        }
     }
     
    

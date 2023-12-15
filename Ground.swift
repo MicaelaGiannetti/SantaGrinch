@@ -21,7 +21,7 @@ class Ground : SKSpriteNode{
     SKTextureAtlas(named:"Environment-ground")
     func createChildren(){
         self.anchorPoint = CGPoint (x:0,y:1)
-        let texture = textureAtlas.textureNamed("tundra")
+        let texture = textureAtlas.textureNamed("tundraMid")
         var tileCount : CGFloat = 0
         let tileSize = CGSize (width: 70, height: 70)
         
