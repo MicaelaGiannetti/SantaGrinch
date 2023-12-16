@@ -26,6 +26,7 @@
 		3B3E23562B2CF57E000DBFE3 /* EncounterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E23552B2CF57E000DBFE3 /* EncounterManager.swift */; };
 		3B3E235A2B2CFA2B000DBFE3 /* EncounterB.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B3E23592B2CFA2B000DBFE3 /* EncounterB.sks */; };
 		3B3E235C2B2CFAC9000DBFE3 /* EncounterC.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B3E235B2B2CFAC9000DBFE3 /* EncounterC.sks */; };
+		3B3E235E2B2D1761000DBFE3 /* Sun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E235D2B2D1761000DBFE3 /* Sun.swift */; };
 		3B489EF72B28773A002CF4B2 /* Ground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B489EF62B28773A002CF4B2 /* Ground.swift */; };
 		3BF528302B284B840030759F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF5282F2B284B840030759F /* Player.swift */; };
 /* End PBXBuildFile section */
@@ -47,10 +48,11 @@
 		3B3E234C2B2C684F000DBFE3 /* Elves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elves.swift; sourceTree = "<group>"; };
 		3B3E234E2B2C6BB5000DBFE3 /* Obstacles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacles.swift; sourceTree = "<group>"; };
 		3B3E23502B2CEBAA000DBFE3 /* Gifts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gifts.swift; sourceTree = "<group>"; };
-		3B3E23532B2CF26D000DBFE3 /* EncounterA.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterA.sks; sourceTree = "<group>"; };
+		3B3E23532B2CF26D000DBFE3 /* EncounterA.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = EncounterA.sks; path = Encounters/EncounterA.sks; sourceTree = SOURCE_ROOT; };
 		3B3E23552B2CF57E000DBFE3 /* EncounterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncounterManager.swift; sourceTree = "<group>"; };
 		3B3E23592B2CFA2B000DBFE3 /* EncounterB.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterB.sks; sourceTree = "<group>"; };
 		3B3E235B2B2CFAC9000DBFE3 /* EncounterC.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterC.sks; sourceTree = "<group>"; };
+		3B3E235D2B2D1761000DBFE3 /* Sun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sun.swift; sourceTree = "<group>"; };
 		3B489EF62B28773A002CF4B2 /* Ground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ground.swift; sourceTree = "<group>"; };
 		3BF5282F2B284B840030759F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +74,7 @@
 				3B3E23552B2CF57E000DBFE3 /* EncounterManager.swift */,
 				3B3E23522B2CF23D000DBFE3 /* Encounters */,
 				3B3E23502B2CEBAA000DBFE3 /* Gifts.swift */,
+				3B3E235D2B2D1761000DBFE3 /* Sun.swift */,
 				3BF5282F2B284B840030759F /* Player.swift */,
 				3B489EF62B28773A002CF4B2 /* Ground.swift */,
 				3B3E234C2B2C684F000DBFE3 /* Elves.swift */,
@@ -244,6 +247,7 @@
 				271CB25127D6569700615359 /* ArcadeGameTemplateApp.swift in Sources */,
 				271CB26B27D6659600615359 /* Constants.swift in Sources */,
 				271CB26827D6570800615359 /* GameOverView.swift in Sources */,
+				3B3E235E2B2D1761000DBFE3 /* Sun.swift in Sources */,
 				271CB26327D656C100615359 /* ArcadeGameView.swift in Sources */,
 				3B3E23512B2CEBAA000DBFE3 /* Gifts.swift in Sources */,
 				3B3E23562B2CF57E000DBFE3 /* EncounterManager.swift in Sources */,

@@ -33,6 +33,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     var playerProgress = CGFloat()
     let encounterManager = EncounterManager()
     var nextEncounterSpawnPosition = CGFloat (150)
+    let sun = Sun()
     
     
     
@@ -48,6 +49,8 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         ground.size = CGSize (width: self.size.width * 6, height: 0)
         ground.createChildren()
         self.addChild(ground)
+        sun.position.y = 250
+        self.addChild(sun)
         
       
         
@@ -80,8 +83,11 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     //Keep camera on player
     
     override func didSimulatePhysics() {
-        self.camera!.position.x = player.position.x + 200
+        self.camera!.position.x = player.position.x + 250
         self.camera!.position.y = 170
+        
+        sun.position.x = player.position.x + 500
+        
         playerProgress = player.position.x - initialPlayerPosition.x
         ground.checkForReposition(playerProgress: playerProgress)
         

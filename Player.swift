@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 class Player : SKSpriteNode{
-    var initialSize : CGSize = CGSize(width: 48, height: 56)
+    var initialSize : CGSize = CGSize(width: 80, height: 120)
     var textureAtlas : SKTextureAtlas = SKTextureAtlas(named: "RunningPlayer")
     var runAnimation = SKAction()
     var jumpAnimation = SKAction()
@@ -23,8 +23,8 @@ class Player : SKSpriteNode{
         super.init(texture:nil, color:.clear, size:initialSize)
         createAnimations()
         self.run(runAnimation, withKey: "runningAnimation")
-        let bodyTexture = textureAtlas.textureNamed("player1")
-        self.physicsBody = SKPhysicsBody(texture: bodyTexture, size: self.size)
+        //let bodyTexture = textureAtlas.textureNamed("player1")
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 80, height: 115))
         self.physicsBody?.mass = 1
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = 1
@@ -35,8 +35,11 @@ class Player : SKSpriteNode{
     func createAnimations() {
         let runFrames: [SKTexture] =
         [textureAtlas.textureNamed("player1"),
-         textureAtlas.textureNamed("player2")]
-        let runAction = SKAction.animate(with: runFrames, timePerFrame: 0.14)
+         textureAtlas.textureNamed("player2"),
+         textureAtlas.textureNamed("player3"),
+         textureAtlas.textureNamed("player4"),
+        ]
+        let runAction = SKAction.animate(with: runFrames, timePerFrame: 0.1)
         runAnimation = SKAction.repeatForever(runAction)
         let jumpFrames: [SKTexture] =
         [textureAtlas.textureNamed("player-jump")]

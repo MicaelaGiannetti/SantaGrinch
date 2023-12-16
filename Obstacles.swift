@@ -19,6 +19,7 @@ class Obstacles : SKSpriteNode {
         self.physicsBody = SKPhysicsBody (texture: textureAtlas.textureNamed("obstacle1"), size: initialSize)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = false
+        self.physicsBody?.categoryBitMask = 2
         createAnimations()
         self.run(lightAnimation)
     }
