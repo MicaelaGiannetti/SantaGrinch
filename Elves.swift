@@ -13,15 +13,18 @@ class Elves : SKSpriteNode {
     var textureAtlas : SKTextureAtlas =
     SKTextureAtlas(named: "Elves")
     var elfAnimation = SKAction()
+
     
     init(){
+        
         super.init(texture:nil, color:.clear, size:initialSize)
+        self.name = "elf"
         self.physicsBody = SKPhysicsBody(circleOfRadius: size.width/2)
         self.physicsBody?.affectedByGravity = false
         createAnimations()
         self.run (elfAnimation)
         self.physicsBody?.categoryBitMask = 4
-        self.physicsBody?.collisionBitMask = 1 | 2 
+        self.physicsBody?.collisionBitMask = ~16
     }
     
     func createAnimations() {

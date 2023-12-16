@@ -61,6 +61,7 @@ class EncounterManager {
                 if let initialPositionVal = spriteNode.userData?.value(forKey: "initialPosition") as? NSValue {
                     spriteNode.position = initialPositionVal.cgPointValue
                 }
+                resetSpritePositions(node: spriteNode)
             }
         }
     }

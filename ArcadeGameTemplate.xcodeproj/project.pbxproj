@@ -27,6 +27,7 @@
 		3B3E235A2B2CFA2B000DBFE3 /* EncounterB.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B3E23592B2CFA2B000DBFE3 /* EncounterB.sks */; };
 		3B3E235C2B2CFAC9000DBFE3 /* EncounterC.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B3E235B2B2CFAC9000DBFE3 /* EncounterC.sks */; };
 		3B3E235E2B2D1761000DBFE3 /* Sun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E235D2B2D1761000DBFE3 /* Sun.swift */; };
+		3B3E23602B2E42B7000DBFE3 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E235F2B2E42B7000DBFE3 /* Background.swift */; };
 		3B489EF72B28773A002CF4B2 /* Ground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B489EF62B28773A002CF4B2 /* Ground.swift */; };
 		3BF528302B284B840030759F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF5282F2B284B840030759F /* Player.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		3B3E23592B2CFA2B000DBFE3 /* EncounterB.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterB.sks; sourceTree = "<group>"; };
 		3B3E235B2B2CFAC9000DBFE3 /* EncounterC.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterC.sks; sourceTree = "<group>"; };
 		3B3E235D2B2D1761000DBFE3 /* Sun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sun.swift; sourceTree = "<group>"; };
+		3B3E235F2B2E42B7000DBFE3 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		3B489EF62B28773A002CF4B2 /* Ground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ground.swift; sourceTree = "<group>"; };
 		3BF5282F2B284B840030759F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +104,7 @@
 				271CB26427D656D700615359 /* Game */,
 				271CB26927D6571000615359 /* Game Over */,
 				271CB25427D6569900615359 /* Assets.xcassets */,
+				3B3E235F2B2E42B7000DBFE3 /* Background.swift */,
 				271CB25627D6569900615359 /* Preview Content */,
 			);
 			path = ArcadeGameTemplate;
@@ -239,6 +242,7 @@
 				3B3E234F2B2C6BB5000DBFE3 /* Obstacles.swift in Sources */,
 				271CB27027D74CAF00615359 /* GameDurationView.swift in Sources */,
 				271CB26E27D6A58A00615359 /* ArcadeGameScene.swift in Sources */,
+				3B3E23602B2E42B7000DBFE3 /* Background.swift in Sources */,
 				271CB26127D656BA00615359 /* MainScreenView.swift in Sources */,
 				271CB25F27D656A800615359 /* ArcadeGameLogic.swift in Sources */,
 				271CB25327D6569700615359 /* ContentView.swift in Sources */,

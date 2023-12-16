@@ -12,6 +12,8 @@ struct PhysicsCategory {
     static let Ground: UInt32 = 2
     static let Elves : UInt32 = 4
     static let Obstacles : UInt32 = 8
+    static let DamagedPlayer : UInt32 = 16
+    static let Gifts : UInt32 = 32
 }
 
 class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
@@ -34,6 +36,10 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     let encounterManager = EncounterManager()
     var nextEncounterSpawnPosition = CGFloat (150)
     let sun = Sun()
+    let gift = Gifts()
+    var giftsCollected = 0
+    var giftList : [SKSpriteNode] = []
+    var backgrounds : [Background] = []
     
     
     
@@ -44,13 +50,24 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         self.camera = cam
         player.position = initialPlayerPosition
         self.addChild(player)
-        player.RunningPlayer()
+      //  player.RunningPlayer()
         ground.position = CGPoint (x: -self.size.width * 2, y: 30)
         ground.size = CGSize (width: self.size.width * 6, height: 0)
         ground.createChildren()
         self.addChild(ground)
         sun.position.y = 250
+        sun.zPosition = -11
         self.addChild(sun)
+        encounterManager.addEncountersToScene(gameScene: self)
+       for child in self.children {
+          if child.name == "gift" {
+            if let child = child as? SKSpriteNode {
+              giftList.append(child)
+            }
+          }
+        }
+        print (giftList.count) 
+        
         
       
         
@@ -59,21 +76,70 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         self.setUpGame()
         self.physicsWorld.contactDelegate = self
      //   self.setUpPhysicsWorld()
-        encounterManager.addEncountersToScene(gameScene: self)
+        
+        // Instantiate three Backgrounds to the backgrounds array:
+                      for _ in 0..<3 {
+                          backgrounds.append(Background())
+                      }
+                      // Spawn the new backgrounds:
+                      backgrounds[0].spawn(parentNode: self,
+                          imageName: "foreground", zPosition: -5,
+                          movementMultiplier: 0.75)
+                      backgrounds[1].spawn(parentNode: self,
+                          imageName: "midground", zPosition: -10,
+                          movementMultiplier: 0.5)
+                      backgrounds[2].spawn(parentNode: self,
+                          imageName: "background", zPosition: -15,
+                          movementMultiplier: 0.2)
+        
         
         
     }
     func didBegin(_ contact: SKPhysicsContact){
-        if contact.bodyA.categoryBitMask == 1 && contact.bodyB.categoryBitMask == 2 {
+        
+        //PLAYER & GROUND
+        if (contact.bodyA.categoryBitMask == 1  && contact.bodyB.categoryBitMask == 2) || (contact.bodyA.categoryBitMask == 16  && contact.bodyB.categoryBitMask == 2) {
             player.playerInAir = false
             player.stopJumping()
-            print ("Contatto")
+        //    print ("Contatto")
         }
-        if contact.bodyA.categoryBitMask == 2 && contact.bodyB.categoryBitMask == 1 {
+        if (contact.bodyA.categoryBitMask == 2 && contact.bodyB.categoryBitMask == 1) || (contact.bodyA.categoryBitMask == 2  && contact.bodyB.categoryBitMask == 16) {
             player.playerInAir = false
             player.stopJumping()
-            print ("Contatto")
+        //    print ("Contatto")
         }
+        
+        // PLAYER & ENEMIES
+        if contact.bodyA.categoryBitMask == 1  && contact.bodyB.categoryBitMask == 4 {
+        //   print ("take damage")
+            player.takeDamage()
+        }
+        if contact.bodyA.categoryBitMask == 4 && contact.bodyB.categoryBitMask == 1  {
+       //     print ("take damage")
+             player.takeDamage()
+        }
+        
+        //PLAYER & GIFTS
+        if contact.bodyA.categoryBitMask == 1  && contact.bodyB.categoryBitMask == 32 {
+            gift.collect()
+         
+            self.giftsCollected += 10
+            
+            
+        }
+        if contact.bodyA.categoryBitMask == 32 && contact.bodyB.categoryBitMask == 1  {
+            gift.collect()
+            
+            self.giftsCollected += 10
+          //  print (self.giftsCollected)
+        }
+        
+        
+        
+        
+     
+        
+        
      /*   let otherBody : SKPhysicsBody
         if (contact.bodyA.categoryBitMask & 1) > 0 {
             otherBody = contact.bodyB
@@ -96,13 +162,25 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
                 currentXPos: nextEncounterSpawnPosition)
             nextEncounterSpawnPosition += 1200
         }
+        for background in self.backgrounds {
+            background.updatePosition(playerProgress:
+                                        playerProgress)
+        }
     }
     
    
     
     override func update(_ currentTime: TimeInterval) {
-        print ("PlayerIsInAir\(player.playerInAir)")
-    
+     //   print (player.playerInAir)
+     //   print (player.health)
+        player.update()
+       /* var GiftList : [SKSpriteNode] = []
+        enumerateChildNodes(withName: "elf") { [self] node, _ in
+            let gift = node as! SKSpriteNode
+            GiftList.append(gift)
+        }
+        print (GiftList.count) */
+        
         // ...
         
         // If the game over condition is met, the game will finish
