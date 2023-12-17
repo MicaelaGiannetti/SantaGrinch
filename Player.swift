@@ -157,7 +157,7 @@ class Player : SKSpriteNode{
         }
         else {
             self.run(self.damageAnimation)
-          //  self.run(self.damageImageAnimation)
+            self.run(self.damageImageAnimation)
         }
         
     }

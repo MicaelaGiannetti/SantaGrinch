@@ -40,6 +40,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     var giftsCollected = 0
     var giftList : [SKSpriteNode] = []
     var backgrounds : [Background] = []
+    let elf = Elves()
     
     
     
@@ -59,7 +60,11 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         sun.zPosition = -11
         self.addChild(sun)
         encounterManager.addEncountersToScene(gameScene: self)
-       for child in self.children {
+        self.addChild(elf)
+        elf.position = CGPoint(x: -2000, y: -2000)
+        self.addChild(gift)
+        gift.position = CGPoint(x: -2000, y: -2000)
+     /*  for child in self.children {
           if child.name == "gift" {
             if let child = child as? SKSpriteNode {
               giftList.append(child)
@@ -67,7 +72,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
           }
         }
         print (giftList.count) 
-        
+        */
         
       
         
@@ -120,7 +125,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         //PLAYER & GIFTS
-        if contact.bodyA.categoryBitMask == 1  && contact.bodyB.categoryBitMask == 32 {
+        if contact.bodyA.categoryBitMask == 1 && contact.bodyB.categoryBitMask == 32 {
             gift.collect()
          
             self.giftsCollected += 10
@@ -161,7 +166,36 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
             encounterManager.placeNextEncounter(
                 currentXPos: nextEncounterSpawnPosition)
             nextEncounterSpawnPosition += 1200
+            
+            let elfRoll = Int(arc4random_uniform(5))
+            if elfRoll == 0 {
+                // Only move the star if it is off the screen.
+                if abs(player.position.x - elf.position.x)
+                    > 1200 {
+                    elf.position = CGPoint(x:
+                                            nextEncounterSpawnPosition, y: 30)
+                    // Remove any previous velocity and spin:
+                    elf.physicsBody?.angularVelocity = 0
+                    elf.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                }
+            }
+            let giftRoll = 0
+            if giftRoll == 0 {
+                // Only move the star if it is off the screen.
+                if abs(player.position.x - gift.position.x)
+                    > 200 {
+                    // Y Position 50-450:
+                    let randomYPos = 50 +
+                    CGFloat(arc4random_uniform(200))
+                    gift.position = CGPoint(x:
+                                            nextEncounterSpawnPosition, y: randomYPos)
+                    // Remove any previous velocity and spin:
+                    gift.physicsBody?.angularVelocity = 0
+                    gift.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                }
+            }
         }
+        
         for background in self.backgrounds {
             background.updatePosition(playerProgress:
                                         playerProgress)

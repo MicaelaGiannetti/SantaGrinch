@@ -43,27 +43,35 @@ class Gifts : SKSpriteNode {
         let pulseSequence = SKAction.sequence([pulseOutGroup,pulseInGroup])
         pulseAnimation = SKAction.repeatForever(pulseSequence)
     }
-    func collect () {
-        self.physicsBody?.categoryBitMask = 0
-        print ("GIFT")
-        print (self.position)
-        self.alpha = 0
-      /*  let collectAnimation = SKAction.group([SKAction.fadeAlpha(to: 0, duration: 0.2),
-                                               SKAction.scale(to: 1.5, duration: 0.2),
-                                               SKAction.move(by: CGVector(dx: 0, dy: 25), duration: 0.2)])
-        let resetAfterCollected = SKAction.run{
-            self.position.y = 300
-            self.alpha = 1
-            self.xScale = 1
-            self.yScale = 1
-            self.physicsBody?.categoryBitMask = 32
-        }
-        let collectSequence = SKAction.sequence([
-        collectAnimation, resetAfterCollected])
-        self.run(collectSequence) */
+    func collect() {
+                       // Prevent further contact:
+                       self.physicsBody?.categoryBitMask = 0
+                       // Fade out, move up, and scale up the coin:
+                       let collectAnimation = SKAction.group([
+                           SKAction.fadeAlpha(to: 0, duration: 0.2),
+                           SKAction.scale(to: 1.5, duration: 0.2),
+                           SKAction.move(by: CGVector(dx: 0, dy: 25),
+                              duration: 0.2)
+                           ])
+                       // After fading it out, move the coin out of the way
+                       // and reset it to initial values until the encounter
+                       // system re-uses it:
+                       let resetAfterCollected = SKAction.run {
+                           self.position.y = 5000
+                           self.alpha = 1
+                           self.xScale = 1
+                           self.yScale = 1
+                           self.physicsBody?.categoryBitMask = 32
+                       }
+                       // Combine the actions into a sequence:
+                       let collectSequence = SKAction.sequence([
+                           collectAnimation,
+                           resetAfterCollected
+                           ])
+                       // Run the collect animation:
+                       self.run(collectSequence)
+                   }
         
-        
-    }
     required init? (coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
     }

@@ -20,7 +20,8 @@ class Elves : SKSpriteNode {
         super.init(texture:nil, color:.clear, size:initialSize)
         self.name = "elf"
         self.physicsBody = SKPhysicsBody(circleOfRadius: size.width/2)
-        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.mass = 100
+        self.physicsBody?.affectedByGravity = true
         createAnimations()
         self.run (elfAnimation)
         self.physicsBody?.categoryBitMask = 4
