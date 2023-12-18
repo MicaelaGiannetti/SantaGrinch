@@ -29,51 +29,59 @@ struct MainScreenView: View {
     let accentColor: Color = MainScreenProperties.accentColor
     
     var body: some View {
-        VStack(alignment: .center, spacing: 16.0) {
-            Spacer()
+        ZStack {
+            Image("main-background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
             
-            /**
-             * # PRO TIP!
-             * The game title can be customized to represent the visual identity of the game
-             */
-            Text("\(self.gameTitle)")
-                .font(.title)
-                .fontWeight(.black)
-            
-            Spacer()
-            
-            /**
-             * To customize the instructions, check the **Constants.swift** file
-             */
-           /* ForEach(self.gameInstructions, id: \.title) { instruction in
-                GroupBox(label: Label("\(instruction.title)", systemImage: "\(instruction.icon)").foregroundColor(self.accentColor)) {
-                    HStack {
-                        Text("\(instruction.description)")
-                            .font(.callout)
-                        Spacer()
-                    }
+            VStack(alignment: .center, spacing: 16.0) {
+                Spacer()
+                
+                /**
+                 * # PRO TIP!
+                 * The game title can be customized to represent the visual identity of the game
+                 */
+                Text("\(self.gameTitle)")
+                    .font(.largeTitle)
+                    .foregroundStyle(.white)
+                    .bold()
+                
+                Spacer()
+                
+                /**
+                 * To customize the instructions, check the **Constants.swift** file
+                 */
+                 ForEach(self.gameInstructions, id: \.title) { instruction in
+                 GroupBox(label: Label("\(instruction.title)", systemImage: "\(instruction.icon)").foregroundColor(self.accentColor)) {
+                 HStack {
+                 Text("\(instruction.description)")
+                 .font(.callout)
+                 Spacer()
+                 }
+                 }
+                 }
+                
+                Spacer()
+                
+                /**
+                 * Customize the appearance of the **Insert a Coin** button to match the visual identity of your game
+                 */
+                Button {
+                    withAnimation { self.startGame() }
+                } label: {
+                    Text("Fight for Christmas!")
+                        .padding()
+                        .frame(maxWidth: .infinity)
                 }
-            }*/
-            
-            Spacer()
-            
-            /**
-             * Customize the appearance of the **Insert a Coin** button to match the visual identity of your game
-             */
-            Button {
-                withAnimation { self.startGame() }
-            } label: {
-                Text("Insert a coin")
-                    .padding()
-                    .frame(maxWidth: .infinity)
+                .foregroundColor(.white)
+                .background(.red)
+                .cornerRadius(10.0)
+                
             }
-            .foregroundColor(.white)
-            .background(self.accentColor)
-            .cornerRadius(10.0)
-            
+            .padding()
+            .statusBar(hidden: true)
         }
-        .padding()
-        .statusBar(hidden: true)
     }
     
     /**

@@ -59,40 +59,19 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     let sun = Sun()
     let gift = Gifts()
     let rectangleScore = Rectangle()
+    let hud = HUD()
     
     
-    @Published var giftsCollected : Int = 0 {
-        didSet{
-            scoreText = "Score: \(giftsCollected)"
-            updateScoreLabelText(newValue: scoreText)
-        }
-    }
+    @Published var giftsCollected : Int = 0
+        
+    
     
     var giftList : [SKSpriteNode] = []
     var backgrounds : [Background] = []
     let elf = Elves()
     
-    var scoreLabel = SKLabelNode()
-    var scoreText: String = ""
     
-    func updateScoreLabelText(newValue: String){
-        scoreLabel.text = String(newValue)
-    }
-    
-    func updateScoreLabelPosition(){
-        scoreLabel.position = CGPoint(x: player.position.x + 10, y: 280)
-    }
-    
-    func setupScoreLabel() {
-        scoreText = "Score: \(giftsCollected)"
-        scoreLabel.text = String(scoreText)
-        scoreLabel.zPosition = 100
-        scoreLabel.position = CGPoint(x: player.position.x + 10, y: 280)
-        scoreLabel.fontColor = .black
-        scoreLabel.color = .white
-        addChild(scoreLabel)
-    }
-    
+   
     
     override func didMove(to view: SKView) {
         
@@ -114,11 +93,19 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         elf.position = CGPoint(x: -2000, y: -2000)
         self.addChild(gift)
         gift.position = CGPoint(x: -2000, y: -2000)
+        // Add the camera itself to the scene's node tree: 
+        self.addChild(self.camera!)
+        // Position the camera node above the game elements: 
+        self.camera!.zPosition = 50
+        // Create the HUD's child nodes: 
+        hud.createHudNodes(screenSize: self.size)
+        // Add the HUD to the camera's node tree: 
+        self.camera!.addChild(hud)
         
       
         
         
-        setupScoreLabel()
+       
         /*  for child in self.children {
          if child.name == "gift" {
          if let child = child as? SKSpriteNode {
@@ -163,11 +150,13 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         if (contact.bodyA.categoryBitMask == 1  && contact.bodyB.categoryBitMask == 2) || (contact.bodyA.categoryBitMask == 16  && contact.bodyB.categoryBitMask == 2) {
             player.playerInAir = false
             player.stopJumping()
+            hud.setHealthDisplay(newHealth: player.health)
         //    print ("Contatto")
         }
         if (contact.bodyA.categoryBitMask == 2 && contact.bodyB.categoryBitMask == 1) || (contact.bodyA.categoryBitMask == 2  && contact.bodyB.categoryBitMask == 16) {
             player.playerInAir = false
             player.stopJumping()
+            hud.setHealthDisplay(newHealth: player.health)
         //    print ("Contatto")
         }
         
@@ -175,24 +164,29 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask == 1  && contact.bodyB.categoryBitMask == 4 {
         //   print ("take damage")
             player.takeDamage()
+            hud.setHealthDisplay(newHealth: player.health)
         }
         if contact.bodyA.categoryBitMask == 4 && contact.bodyB.categoryBitMask == 1  {
        //     print ("take damage")
              player.takeDamage()
+            hud.setHealthDisplay(newHealth: player.health)
         }
         
         //PLAYER & GIFTS
-        if contact.bodyA.categoryBitMask == 1 && contact.bodyB.categoryBitMask == 32 {
+        if (contact.bodyA.categoryBitMask == 1 && contact.bodyB.categoryBitMask == 32) ||
+            (contact.bodyA.categoryBitMask == 16 && contact.bodyB.categoryBitMask == 32){
             gift.collect()
-         
             self.giftsCollected += 10
+            hud.setGiftCountDisplay(newGiftCount: self.giftsCollected)
             
             
         }
-        if contact.bodyA.categoryBitMask == 32 && contact.bodyB.categoryBitMask == 1  {
+        if (contact.bodyA.categoryBitMask == 32 && contact.bodyB.categoryBitMask == 1) ||
+            (contact.bodyA.categoryBitMask == 32 && contact.bodyB.categoryBitMask == 16){
             gift.collect()
             
             self.giftsCollected += 10
+            hud.setGiftCountDisplay(newGiftCount: self.giftsCollected)
           //  print (self.giftsCollected)
         }
         
@@ -265,7 +259,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
      //   print (player.playerInAir)
      //   print (player.health)
         player.update()
-        updateScoreLabelPosition()
+        
        /* var GiftList : [SKSpriteNode] = []
         enumerateChildNodes(withName: "elf") { [self] node, _ in
             let gift = node as! SKSpriteNode

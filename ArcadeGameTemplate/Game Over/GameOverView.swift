@@ -21,34 +21,37 @@ struct GameOverView: View {
     
     var body: some View {
         ZStack {
-            Color.white
-                .ignoresSafeArea()
+            Image("main-background")
+            .resizable()
+            .scaledToFill()
+            .ignoresSafeArea()
             
             VStack(alignment: .center) {
                 Spacer()
-                
-                Button {
-                    withAnimation { self.backToMainScreen() }
-                } label: {
-                    Image(systemName: "arrow.backward")
-                        .foregroundColor(.black)
+                VStack(alignment: .center){
+                    Text ("GAME OVER")
+                        .font(.largeTitle)
+                        .foregroundStyle(Color.accentColor)
+                        .padding()
+                    Text ("Oh oh oh you lost.")
                         .font(.title)
-                }
-                .background(Circle().foregroundColor(Color(uiColor: UIColor.systemGray6)).frame(width: 100, height: 100, alignment: .center))
-                
+                        .padding()
+                        .foregroundStyle(Color.accentColor)
+                } .background(RoundedRectangle(cornerRadius: 10).foregroundStyle(.white).frame(width: 600))
                 Spacer()
                 
                 Button {
                     withAnimation { self.restartGame() }
                 } label: {
                     Image(systemName: "arrow.clockwise")
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .font(.title)
                 }
-                .background(Circle().foregroundColor(Color(uiColor: UIColor.systemGray6)).frame(width: 100, height: 100, alignment: .center))
+                .background(Circle().foregroundColor(.red).frame(width: 100, height: 100, alignment: .center))
                 
                 Spacer()
             }
+       
         }
         .statusBar(hidden: true)
     }

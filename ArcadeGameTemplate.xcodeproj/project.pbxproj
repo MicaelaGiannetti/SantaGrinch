@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		271CB25127D6569700615359 /* ArcadeGameTemplateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CB25027D6569700615359 /* ArcadeGameTemplateApp.swift */; };
 		271CB25327D6569700615359 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CB25227D6569700615359 /* ContentView.swift */; };
-		271CB25527D6569900615359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 271CB25427D6569900615359 /* Assets.xcassets */; };
 		271CB25827D6569900615359 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 271CB25727D6569900615359 /* Preview Assets.xcassets */; };
 		271CB25F27D656A800615359 /* ArcadeGameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CB25E27D656A800615359 /* ArcadeGameLogic.swift */; };
 		271CB26127D656BA00615359 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CB26027D656BA00615359 /* MainScreenView.swift */; };
@@ -27,10 +26,12 @@
 		3B3E235C2B2CFAC9000DBFE3 /* EncounterC.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3B3E235B2B2CFAC9000DBFE3 /* EncounterC.sks */; };
 		3B3E235E2B2D1761000DBFE3 /* Sun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E235D2B2D1761000DBFE3 /* Sun.swift */; };
 		3B3E23602B2E42B7000DBFE3 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E235F2B2E42B7000DBFE3 /* Background.swift */; };
-		3B3E23622B303ADF000DBFE3 /* Backgroundsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3B3E23612B303ADF000DBFE3 /* Backgroundsound.mp3 */; };
 		3B489EF72B28773A002CF4B2 /* Ground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B489EF62B28773A002CF4B2 /* Ground.swift */; };
 		3BF327952B3062BA006A9825 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF327942B3062BA006A9825 /* Utilities.swift */; };
 		3BF327972B306873006A9825 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF327962B306873006A9825 /* Rectangle.swift */; };
+		3BF327992B30DBD5006A9825 /* Backgroundsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BF327982B30DBD4006A9825 /* Backgroundsound.mp3 */; };
+		3BF3279B2B30EF50006A9825 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BF3279A2B30EF50006A9825 /* Assets.xcassets */; };
+		3BF3279D2B30FAE2006A9825 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF3279C2B30FAE2006A9825 /* HUD.swift */; };
 		3BF528302B284B840030759F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF5282F2B284B840030759F /* Player.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +39,6 @@
 		271CB24D27D6569700615359 /* ArcadeGameTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcadeGameTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		271CB25027D6569700615359 /* ArcadeGameTemplateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeGameTemplateApp.swift; sourceTree = "<group>"; };
 		271CB25227D6569700615359 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		271CB25427D6569900615359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		271CB25727D6569900615359 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		271CB25E27D656A800615359 /* ArcadeGameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeGameLogic.swift; sourceTree = "<group>"; };
 		271CB26027D656BA00615359 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
@@ -56,10 +56,12 @@
 		3B3E235B2B2CFAC9000DBFE3 /* EncounterC.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EncounterC.sks; sourceTree = "<group>"; };
 		3B3E235D2B2D1761000DBFE3 /* Sun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sun.swift; sourceTree = "<group>"; };
 		3B3E235F2B2E42B7000DBFE3 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
-		3B3E23612B303ADF000DBFE3 /* Backgroundsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Backgroundsound.mp3; path = ../../../../../../Downloads/Backgroundsound.mp3; sourceTree = "<group>"; };
 		3B489EF62B28773A002CF4B2 /* Ground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ground.swift; sourceTree = "<group>"; };
 		3BF327942B3062BA006A9825 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		3BF327962B306873006A9825 /* Rectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
+		3BF327982B30DBD4006A9825 /* Backgroundsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Backgroundsound.mp3; path = ../../../../../../Downloads/Backgroundsound.mp3; sourceTree = "<group>"; };
+		3BF3279A2B30EF50006A9825 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
+		3BF3279C2B30FAE2006A9825 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		3BF5282F2B284B840030759F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 				3B489EF62B28773A002CF4B2 /* Ground.swift */,
 				3B3E234C2B2C684F000DBFE3 /* Elves.swift */,
 				3B3E234E2B2C6BB5000DBFE3 /* Obstacles.swift */,
+				3BF3279C2B30FAE2006A9825 /* HUD.swift */,
 				271CB24F27D6569700615359 /* ArcadeGameTemplate */,
 				271CB24E27D6569700615359 /* Products */,
 			);
@@ -108,7 +111,6 @@
 				271CB26C27D6A13D00615359 /* Main Screen */,
 				271CB26427D656D700615359 /* Game */,
 				271CB26927D6571000615359 /* Game Over */,
-				271CB25427D6569900615359 /* Assets.xcassets */,
 				3B3E235F2B2E42B7000DBFE3 /* Background.swift */,
 				271CB25627D6569900615359 /* Preview Content */,
 			);
@@ -118,6 +120,7 @@
 		271CB25627D6569900615359 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				3BF3279A2B30EF50006A9825 /* Assets.xcassets */,
 				271CB25727D6569900615359 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -129,7 +132,7 @@
 				271CB26227D656C100615359 /* ArcadeGameView.swift */,
 				271CB26F27D74CAF00615359 /* GameDurationView.swift */,
 				271CB26D27D6A58A00615359 /* ArcadeGameScene.swift */,
-				3B3E23612B303ADF000DBFE3 /* Backgroundsound.mp3 */,
+				3BF327982B30DBD4006A9825 /* Backgroundsound.mp3 */,
 				271CB25E27D656A800615359 /* ArcadeGameLogic.swift */,
 				3BF327942B3062BA006A9825 /* Utilities.swift */,
 			);
@@ -228,12 +231,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B3E23622B303ADF000DBFE3 /* Backgroundsound.mp3 in Resources */,
+				3BF327992B30DBD5006A9825 /* Backgroundsound.mp3 in Resources */,
 				3B3E23542B2CF26D000DBFE3 /* EncounterA.sks in Resources */,
 				3B3E235C2B2CFAC9000DBFE3 /* EncounterC.sks in Resources */,
 				271CB25827D6569900615359 /* Preview Assets.xcassets in Resources */,
+				3BF3279B2B30EF50006A9825 /* Assets.xcassets in Resources */,
 				3B3E235A2B2CFA2B000DBFE3 /* EncounterB.sks in Resources */,
-				271CB25527D6569900615359 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B3E234D2B2C684F000DBFE3 /* Elves.swift in Sources */,
+				3BF3279D2B30FAE2006A9825 /* HUD.swift in Sources */,
 				3BF528302B284B840030759F /* Player.swift in Sources */,
 				3B3E234F2B2C6BB5000DBFE3 /* Obstacles.swift in Sources */,
 				271CB27027D74CAF00615359 /* GameDurationView.swift in Sources */,
@@ -403,6 +407,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -437,6 +442,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

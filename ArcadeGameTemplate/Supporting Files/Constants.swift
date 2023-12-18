@@ -37,15 +37,12 @@ typealias Instruction = (icon: String, title: String, description: String)
  */
 
 struct MainScreenProperties {
-    static let gameTitle: String = "Game Title"
+    static let gameTitle: String = "Dr. Soos"
     
     static let gameInstructions: [Instruction] = [
-        (icon: "hand.raised", title: "Instruction 1", description: "Instruction description."),
-        (icon: "hand.tap", title: "Instruction 2", description: "Instruction description."),
-        (icon: "hand.draw", title: "Instruction 3", description: "Instruction description."),
-        (icon: "hand.tap", title: "Instruction 4", description: "Instruction description."),
-        (icon: "hand.raised", title: "Instruction 5", description: "Instruction description."),
-        (icon: "hands.sparkles", title: "Instruction 6", description: "Instruction description."),
+        (icon: "gift.fill", title: "Fill your grinchness!", description: "Collect the gifts for a perfect Grinchmas."),
+        (icon: "x.circle", title: "Nothing is as it seems.", description: "Avoid the evil elves!"),
+       
     ]
     
     /**

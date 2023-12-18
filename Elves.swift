@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 class Elves : SKSpriteNode {
-    var initialSize = CGSize (width: 62, height: 102)
+    var initialSize = CGSize (width: 50, height: 90)
     var textureAtlas : SKTextureAtlas =
     SKTextureAtlas(named: "Elves")
     var elfAnimation = SKAction()
@@ -19,13 +19,13 @@ class Elves : SKSpriteNode {
         
         super.init(texture:nil, color:.clear, size:initialSize)
         self.name = "elf"
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 62, height: 102))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 80))
         self.physicsBody?.mass = 100
         self.physicsBody?.affectedByGravity = true
         createAnimations()
         self.run (elfAnimation)
         self.physicsBody?.categoryBitMask = 4
-        self.physicsBody?.collisionBitMask = ~16
+        self.physicsBody?.collisionBitMask = 1 | 2 
     }
     
     func createAnimations() {

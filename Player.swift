@@ -105,7 +105,7 @@ class Player : SKSpriteNode{
         jumpCount += 1
         startJumping()
         self.physicsBody?.velocity = CGVector.zero
-        self.physicsBody?.applyImpulse(CGVector (dx:0, dy:700))
+        self.physicsBody?.applyImpulse(CGVector (dx:0, dy:800))
        /* let jumpUp = SKAction.moveTo(y: 200, duration: 0.6)
         let jumpDown = SKAction.moveTo(y: 60, duration: 1)
         self.run(SKAction.sequence([jumpUp,jumpDown]), withKey: "Jump") */
