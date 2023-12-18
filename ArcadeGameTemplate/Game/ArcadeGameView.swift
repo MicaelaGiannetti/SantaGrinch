@@ -65,7 +65,7 @@ struct ArcadeGameView: View {
                  * UI element showing the current score of the player.
                  * Remove it if your game is not based on scoring points.
                  */
-                GameScoreView(score: $gameLogic.currentScore)
+               // GameScoreView(score: MyInt(value: gameLogic.currentScore))
             }
             .padding()
             .padding(.top, 24)

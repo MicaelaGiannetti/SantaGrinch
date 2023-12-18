@@ -18,7 +18,6 @@
 		271CB26B27D6659600615359 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CB26A27D6659600615359 /* Constants.swift */; };
 		271CB26E27D6A58A00615359 /* ArcadeGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CB26D27D6A58A00615359 /* ArcadeGameScene.swift */; };
 		271CB27027D74CAF00615359 /* GameDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CB26F27D74CAF00615359 /* GameDurationView.swift */; };
-		271CB27227D74CB900615359 /* GameScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271CB27127D74CB900615359 /* GameScoreView.swift */; };
 		3B3E234D2B2C684F000DBFE3 /* Elves.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E234C2B2C684F000DBFE3 /* Elves.swift */; };
 		3B3E234F2B2C6BB5000DBFE3 /* Obstacles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E234E2B2C6BB5000DBFE3 /* Obstacles.swift */; };
 		3B3E23512B2CEBAA000DBFE3 /* Gifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E23502B2CEBAA000DBFE3 /* Gifts.swift */; };
@@ -30,6 +29,8 @@
 		3B3E23602B2E42B7000DBFE3 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3E235F2B2E42B7000DBFE3 /* Background.swift */; };
 		3B3E23622B303ADF000DBFE3 /* Backgroundsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3B3E23612B303ADF000DBFE3 /* Backgroundsound.mp3 */; };
 		3B489EF72B28773A002CF4B2 /* Ground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B489EF62B28773A002CF4B2 /* Ground.swift */; };
+		3BF327952B3062BA006A9825 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF327942B3062BA006A9825 /* Utilities.swift */; };
+		3BF327972B306873006A9825 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF327962B306873006A9825 /* Rectangle.swift */; };
 		3BF528302B284B840030759F /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF5282F2B284B840030759F /* Player.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +47,6 @@
 		271CB26A27D6659600615359 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		271CB26D27D6A58A00615359 /* ArcadeGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcadeGameScene.swift; sourceTree = "<group>"; };
 		271CB26F27D74CAF00615359 /* GameDurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDurationView.swift; sourceTree = "<group>"; };
-		271CB27127D74CB900615359 /* GameScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreView.swift; sourceTree = "<group>"; };
 		3B3E234C2B2C684F000DBFE3 /* Elves.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elves.swift; sourceTree = "<group>"; };
 		3B3E234E2B2C6BB5000DBFE3 /* Obstacles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstacles.swift; sourceTree = "<group>"; };
 		3B3E23502B2CEBAA000DBFE3 /* Gifts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gifts.swift; sourceTree = "<group>"; };
@@ -58,6 +58,8 @@
 		3B3E235F2B2E42B7000DBFE3 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		3B3E23612B303ADF000DBFE3 /* Backgroundsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Backgroundsound.mp3; path = ../../../../../../Downloads/Backgroundsound.mp3; sourceTree = "<group>"; };
 		3B489EF62B28773A002CF4B2 /* Ground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ground.swift; sourceTree = "<group>"; };
+		3BF327942B3062BA006A9825 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		3BF327962B306873006A9825 /* Rectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
 		3BF5282F2B284B840030759F /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 		271CB24427D6569700615359 = {
 			isa = PBXGroup;
 			children = (
+				3BF327962B306873006A9825 /* Rectangle.swift */,
 				3B3E23552B2CF57E000DBFE3 /* EncounterManager.swift */,
 				3B3E23522B2CF23D000DBFE3 /* Encounters */,
 				3B3E23502B2CEBAA000DBFE3 /* Gifts.swift */,
@@ -125,10 +128,10 @@
 			children = (
 				271CB26227D656C100615359 /* ArcadeGameView.swift */,
 				271CB26F27D74CAF00615359 /* GameDurationView.swift */,
-				271CB27127D74CB900615359 /* GameScoreView.swift */,
 				271CB26D27D6A58A00615359 /* ArcadeGameScene.swift */,
 				3B3E23612B303ADF000DBFE3 /* Backgroundsound.mp3 */,
 				271CB25E27D656A800615359 /* ArcadeGameLogic.swift */,
+				3BF327942B3062BA006A9825 /* Utilities.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -251,13 +254,14 @@
 				271CB25F27D656A800615359 /* ArcadeGameLogic.swift in Sources */,
 				271CB25327D6569700615359 /* ContentView.swift in Sources */,
 				3B489EF72B28773A002CF4B2 /* Ground.swift in Sources */,
-				271CB27227D74CB900615359 /* GameScoreView.swift in Sources */,
 				271CB25127D6569700615359 /* ArcadeGameTemplateApp.swift in Sources */,
 				271CB26B27D6659600615359 /* Constants.swift in Sources */,
+				3BF327952B3062BA006A9825 /* Utilities.swift in Sources */,
 				271CB26827D6570800615359 /* GameOverView.swift in Sources */,
 				3B3E235E2B2D1761000DBFE3 /* Sun.swift in Sources */,
 				271CB26327D656C100615359 /* ArcadeGameView.swift in Sources */,
 				3B3E23512B2CEBAA000DBFE3 /* Gifts.swift in Sources */,
+				3BF327972B306873006A9825 /* Rectangle.swift in Sources */,
 				3B3E23562B2CF57E000DBFE3 /* EncounterManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

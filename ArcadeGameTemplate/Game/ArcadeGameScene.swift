@@ -58,11 +58,40 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     var nextEncounterSpawnPosition = CGFloat (150)
     let sun = Sun()
     let gift = Gifts()
-    var giftsCollected : Int = 0
+    let rectangleScore = Rectangle()
+    
+    
+    @Published var giftsCollected : Int = 0 {
+        didSet{
+            scoreText = "Score: \(giftsCollected)"
+            updateScoreLabelText(newValue: scoreText)
+        }
+    }
+    
     var giftList : [SKSpriteNode] = []
     var backgrounds : [Background] = []
     let elf = Elves()
     
+    var scoreLabel = SKLabelNode()
+    var scoreText: String = ""
+    
+    func updateScoreLabelText(newValue: String){
+        scoreLabel.text = String(newValue)
+    }
+    
+    func updateScoreLabelPosition(){
+        scoreLabel.position = CGPoint(x: player.position.x + 10, y: 280)
+    }
+    
+    func setupScoreLabel() {
+        scoreText = "Score: \(giftsCollected)"
+        scoreLabel.text = String(scoreText)
+        scoreLabel.zPosition = 100
+        scoreLabel.position = CGPoint(x: player.position.x + 10, y: 280)
+        scoreLabel.fontColor = .black
+        scoreLabel.color = .white
+        addChild(scoreLabel)
+    }
     
     
     override func didMove(to view: SKView) {
@@ -85,6 +114,11 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         elf.position = CGPoint(x: -2000, y: -2000)
         self.addChild(gift)
         gift.position = CGPoint(x: -2000, y: -2000)
+        
+      
+        
+        
+        setupScoreLabel()
         /*  for child in self.children {
          if child.name == "gift" {
          if let child = child as? SKSpriteNode {
@@ -231,6 +265,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
      //   print (player.playerInAir)
      //   print (player.health)
         player.update()
+        updateScoreLabelPosition()
        /* var GiftList : [SKSpriteNode] = []
         enumerateChildNodes(withName: "elf") { [self] node, _ in
             let gift = node as! SKSpriteNode
@@ -327,12 +362,12 @@ extension ArcadeGameScene {
     
     var isGameOver: Bool {
         // TODO: Customize!
-        
+       
         // Did you reach the time limit?
         // Are the health points depleted?
         // Did an enemy cross a position it should not have crossed?
         
-        return gameLogic.isGameOver
+        return player.health == 0
     }
     
     private func finishGame() {
