@@ -5,6 +5,27 @@
 
 import SpriteKit
 import SwiftUI
+import AVFoundation
+var backgroundMusicPlayer: AVAudioPlayer!
+
+func playBackgroundMusic(filename: String) {
+    let resourceUrl = Bundle.main.url(forResource: filename, withExtension: nil)
+    
+    guard let url = resourceUrl else {
+        print("could not find file: \(filename)")
+        return
+    }
+    
+    do {
+        backgroundMusicPlayer = try AVAudioPlayer(contentsOf: url)
+        backgroundMusicPlayer.numberOfLoops = -1
+        backgroundMusicPlayer.volume = 5.0
+        backgroundMusicPlayer.prepareToPlay()
+        backgroundMusicPlayer.play()
+    } catch {
+        print("Error creating AVAudioPlayer: \(error)")
+    }
+}
 
 struct PhysicsCategory {
     static let None: UInt32 = 0
@@ -37,7 +58,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
     var nextEncounterSpawnPosition = CGFloat (150)
     let sun = Sun()
     let gift = Gifts()
-    var giftsCollected = 0
+    var giftsCollected : Int = 0
     var giftList : [SKSpriteNode] = []
     var backgrounds : [Background] = []
     let elf = Elves()
@@ -51,7 +72,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         self.camera = cam
         player.position = initialPlayerPosition
         self.addChild(player)
-      //  player.RunningPlayer()
+        //  player.RunningPlayer()
         ground.position = CGPoint (x: -self.size.width * 2, y: 30)
         ground.size = CGSize (width: self.size.width * 6, height: 0)
         ground.createChildren()
@@ -64,23 +85,25 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
         elf.position = CGPoint(x: -2000, y: -2000)
         self.addChild(gift)
         gift.position = CGPoint(x: -2000, y: -2000)
-     /*  for child in self.children {
-          if child.name == "gift" {
-            if let child = child as? SKSpriteNode {
-              giftList.append(child)
-            }
-          }
-        }
-        print (giftList.count) 
-        */
+        /*  for child in self.children {
+         if child.name == "gift" {
+         if let child = child as? SKSpriteNode {
+         giftList.append(child)
+         }
+         }
+         }
+         print (giftList.count)
+         */
         
-      
         
-       
+        
+        
         
         self.setUpGame()
         self.physicsWorld.contactDelegate = self
-     //   self.setUpPhysicsWorld()
+        //   self.setUpPhysicsWorld()
+        playBackgroundMusic(filename: "Backgroundsound.mp3")
+     let filename = "Backgroundsound.mp3"
         
         // Instantiate three Backgrounds to the backgrounds array:
                       for _ in 0..<3 {
@@ -167,7 +190,7 @@ class ArcadeGameScene: SKScene, SKPhysicsContactDelegate {
                 currentXPos: nextEncounterSpawnPosition)
             nextEncounterSpawnPosition += 1200
             
-            let elfRoll = Int(arc4random_uniform(5))
+            let elfRoll = 0
             if elfRoll == 0 {
                 // Only move the star if it is off the screen.
                 if abs(player.position.x - elf.position.x)
